@@ -12,13 +12,16 @@ const UserDetails = () => {
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
       .then(res => res.json())
       .then(data => {
-        setUser(data);
-        setLoading(false);
+        // ⏱ artificial delay so Cypress can see "Loading..."
+        setTimeout(() => {
+          setUser(data);
+          setLoading(false);
+        }, 500);
       });
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; // ⚠️ exact text
   }
 
   return (
