@@ -1,13 +1,17 @@
-
+import { HashRouter, Route, Switch } from "react-router-dom";
+import UserList from "./UserList";
+import UserDetails from "./UserDetails";
 import React from "react";
-import './../styles/App.css';
 
-const App = () => {
+function App() {
   return (
-    <div>
-        {/* Do not remove the main div */}
-    </div>
-  )
+    <HashRouter>
+      <Switch>
+        <Route exact path="/" component={UserList} />
+        <Route path="/users/:id" component={UserDetails} />
+      </Switch>
+    </HashRouter>
+  );
 }
 
-export default App
+export default App;
